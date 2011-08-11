@@ -4,6 +4,8 @@ PHP Supervisor Event Framework
 Receives event notifications from Supervisor and sends the parsed notification
 to a callback function.
 
+Download [php-supervisor-event.phar](https://raw.github.com/mtdowling/php-supervisor-event/master/build/php-supervisor-event.phar "php-supervisor-event.phar") to start receiving supervisor events.
+
 Requirements
 ============
 
