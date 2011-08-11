@@ -46,7 +46,6 @@ Open your supervisord.conf file and add the following:
     events=PROCESS_STATE_STARTING,TICK_5
     autostart=true
     autorestart=unexpected
-    stderr_logfile_backups=3
 
 Replace /path/to with the correct path.  More event listener options can be
 found at http://supervisord.org/events.html
