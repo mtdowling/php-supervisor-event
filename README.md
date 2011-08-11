@@ -7,29 +7,8 @@ to a callback function.
 Requirements
 ============
 
-PHP 5.3
-Supervisord
-
-Running the example
-===================
-
-Open your supervisord.conf file and add the following:
-
-    [eventlistener:event_listener]
-    command=php /path/to/examples/log.php
-    process_name=%(program_name)s_%(process_num)02d
-    numprocs=1
-    events=PROCESS_STATE_STARTING,TICK_5
-    autostart=true
-    autorestart=unexpected
-    stderr_logfile_backups=3
-
-Replace /path/to with the correct path.  More event listener options can be
-found at http://supervisord.org/events.html
-
-Now run:
-
-    supervisorctl reload
+* PHP 5.3
+* Supervisord
 
 Example event script
 --------------------
@@ -52,3 +31,24 @@ Example event script
         $listener->log(var_export($event->getData(), true));
         return true;
     });
+
+Running the example
+===================
+
+Open your supervisord.conf file and add the following:
+
+    [eventlistener:event_listener]
+    command=php /path/to/examples/log.php
+    process_name=%(program_name)s_%(process_num)02d
+    numprocs=1
+    events=PROCESS_STATE_STARTING,TICK_5
+    autostart=true
+    autorestart=unexpected
+    stderr_logfile_backups=3
+
+Replace /path/to with the correct path.  More event listener options can be
+found at http://supervisord.org/events.html
+
+Now run:
+
+    supervisorctl reload
