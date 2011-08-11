@@ -1,16 +1,6 @@
 <?php
 
-spl_autoload_register(function($class) {
-    if (0 === strpos($class, 'Supervisor\\')) {
-        if ('\\' != DIRECTORY_SEPARATOR) {
-            $class = 'phar://' . __FILE__ . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
-        } else {
-            $class = 'phar://' . __FILE__ . DIRECTORY_SEPARATOR . $class . '.php';
-        }
-        if (file_exists($class)) {
-            require $class;
-        }
-    }
-});
+require_once 'phar://' . __FILE__ . DIRECTORY_SEPARATOR . 'Supervisor' . DIRECTORY_SEPARATOR . 'EventNotification.php';
+require_once 'phar://' . __FILE__ . DIRECTORY_SEPARATOR . 'Supervisor' . DIRECTORY_SEPARATOR . 'EventListener.php';
 
 __HALT_COMPILER();
