@@ -4,26 +4,53 @@ PHP Supervisor Event Framework
 Receives event notifications from Supervisor and sends the parsed notification
 to a callback function.
 
-Download [php-supervisor-event.phar](https://raw.github.com/mtdowling/php-supervisor-event/master/build/php-supervisor-event.phar "php-supervisor-event.phar") to start receiving supervisor events.
-
 Requirements
 ============
 
 * PHP 5.3
 * Supervisord
 
+Installation
+============
+
+The recommended installation method is through [Composer](http://getcomposer.org).
+
+1. Add ``mtdowling/supervisor-event`` as a dependency in your project's ``composer.json`` file:
+
+        {
+            "require": {
+                "mtdowling/supervisor-event": "*"
+            }
+        }
+
+2. Download and install Composer:
+
+        curl -s http://getcomposer.org/installer | php
+
+3. Install your dependencies:
+
+        php composer.phar install
+
+4. Require Composer's autoloader
+
+    Composer also prepares an autoload file that's capable of autoloading all of the classes in any of the libraries that it downloads. To use it, just add the following line to your code's bootstrap process:
+
+        require 'vendor/autoload.php';
+
+You can find out more on how to install Composer, configure autoloading, and other best-practices for defining dependencies at [getcomposer.org](http://getcomposer.org).
+
 Example event script
 --------------------
 
     <?php
 
-    // include the phar file
-    require_once '/path/to/build/php-supervisor-event.phar';
+    // include the composer autoloader
+    require_once __DIR__ . '/vendor/autoload.php';
 
-    use Supervisor\EventListener;
-    use Supervisor\EventNotification;
+    use Mtdowling\Supervisor\EventListener;
+    use Mtdowling\Supervisor\EventNotification;
 
-    $listener = new Supervisor\EventListener();
+    $listener = new EventListener();
     $listener->listen(function(EventListener $listener, EventNotification $event) {
         $listener->log($event->getEventName());
         $listener->log($event->getServer());

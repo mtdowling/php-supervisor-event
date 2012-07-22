@@ -1,3 +1,6 @@
 nbproject
 phpunit.xml
 coverage
+.idea
+composer.lock
+vendor

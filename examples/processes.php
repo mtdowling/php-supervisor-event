@@ -14,10 +14,10 @@
  * autorestart=unexpected
  */
 
-require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'build' . DIRECTORY_SEPARATOR . 'php-supervisor-event.phar';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-use Supervisor\EventListener;
-use Supervisor\EventNotification;
+use Mtdowling\Supervisor\EventListener;
+use Mtdowling\Supervisor\EventNotification;
 
 // Requires a file name as an argument
 if (!isset($argv[1])) {
@@ -32,7 +32,7 @@ if (!$f) {
     exit(1);
 }
 
-$listener = new Supervisor\EventListener();
+$listener = new EventListener();
 $listener->listen(function(EventListener $listener, EventNotification $event) use ($f) {
     $state = $event->getEventName();
     if (strpos($state, 'PROCESS_STATE_') !== false) {

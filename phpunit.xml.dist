@@ -11,13 +11,13 @@
 
     <testsuites>
         <testsuite name="PHP-Supervisor-Event">
-            <directory>./tests/Supervisor/Tests</directory>
+            <directory>./tests/Mtdowling/Tests/Supervisor</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/Supervisor</directory>
+            <directory suffix=".php">./src/Mtdowling/Supervisor</directory>
         </whitelist>
     </filter>
 

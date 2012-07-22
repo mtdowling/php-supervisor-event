@@ -1,27 +1,16 @@
 <?php
 
-namespace Supervisor\Tests;
+namespace Mtdowling\Tests\Supervisor;
 
-use Supervisor\EventListener;
-use Supervisor\EventNotification;
+use Mtdowling\Supervisor\EventListener;
+use Mtdowling\Supervisor\EventNotification;
 
 /**
  * @author Michael Dowling <michael@guzzlephp.org>
+ * @covers Supervisor\EventListener
  */
 class EventListenerTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers Supervisor\EventListener::setInputStream
-     * @covers Supervisor\EventListener::setOutputStream
-     * @covers Supervisor\EventListener::setErrorStream
-     * @covers Supervisor\EventListener::log
-     * @covers Supervisor\EventListener::readLine
-     * @covers Supervisor\EventListener::sendBusy
-     * @covers Supervisor\EventListener::sendAcknowledged
-     * @covers Supervisor\EventListener::sendComplete
-     * @covers Supervisor\EventListener::sendFail
-     * @covers Supervisor\EventListener::sendReady
-     */
     public function testUsesCustomStreams()
     {
         $listener = new EventListener();
@@ -56,9 +45,6 @@ class EventListenerTest extends \PHPUnit_Framework_TestCase
         fclose($is);
     }
 
-    /**
-     * @covers Supervisor\EventListener::listen
-     */
     public function testListensForEvents()
     {
         $listener = new EventListener();
@@ -90,7 +76,7 @@ class EventListenerTest extends \PHPUnit_Framework_TestCase
                 return 'quit';
             }
         });
-        
+
         rewind($es);
         rewind($os);
 

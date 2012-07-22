@@ -1,17 +1,15 @@
 <?php
 
-namespace Supervisor\Tests;
+namespace Mtdowling\Tests\Supervisor;
 
-use Supervisor\EventNotification;
+use Mtdowling\Supervisor\EventNotification;
 
 /**
  * @author Michael Dowling <michael@guzzlephp.org>
+ * @covers Mtdowling\Supervisor\EventNotification
  */
 class EventNotificationTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers Supervisor\EventNotification::parseData
-     */
     public function testParsesDataString()
     {
         $data = EventNotification::parseData('ver:3.0 server:supervisor serial:313 pool:event_listener poolserial:313 eventname:TICK_5 len:15');
@@ -26,19 +24,6 @@ class EventNotificationTest extends \PHPUnit_Framework_TestCase
         ), $data);
     }
 
-    /**
-     * @covers Supervisor\EventNotification::__construct
-     * @covers Supervisor\EventNotification::getData
-     * @covers Supervisor\EventNotification::getBody
-     * @covers Supervisor\EventNotification::getVer
-     * @covers Supervisor\EventNotification::getServer
-     * @covers Supervisor\EventNotification::getSerial
-     * @covers Supervisor\EventNotification::getPool
-     * @covers Supervisor\EventNotification::getPoolSerial
-     * @covers Supervisor\EventNotification::getEventName
-     * @covers Supervisor\EventNotification::getLen
-     * @covers Supervisor\EventNotification::__toString
-     */
     public function testCreatesDataObjectFromText()
     {
         $event = new EventNotification(
@@ -69,9 +54,6 @@ class EventNotificationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("ver:3.0 server:supervisor serial:313 pool:event_listener poolserial:313 eventname:TICK_5 len:15\nwhen:1313021995", (string) $event);
     }
 
-    /**
-     * @covers Supervisor\EventNotification::__construct
-     */
     public function testHandlesMultiLineUpdates()
     {
         $event = new EventNotification(

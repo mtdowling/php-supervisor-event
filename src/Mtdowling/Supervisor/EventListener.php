@@ -1,6 +1,6 @@
 <?php
 
-namespace Supervisor;
+namespace Mtdowling\Supervisor;
 
 /**
  * Handles communication between Supervisord events and an event callback

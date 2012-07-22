@@ -1,6 +1,6 @@
 <?php
 
-namespace Supervisor;
+namespace Mtdowling\Supervisor;
 
 /**
  * Wrapper for the Supervisor event notification protocol

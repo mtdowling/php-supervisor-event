@@ -3,12 +3,12 @@
  * Here is a simple example of creating a supervisor event listener
  */
 
-require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'build' . DIRECTORY_SEPARATOR . 'php-supervisor-event.phar';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-use Supervisor\EventListener;
-use Supervisor\EventNotification;
+use Mtdowling\Supervisor\EventListener;
+use Mtdowling\Supervisor\EventNotification;
 
-$listener = new Supervisor\EventListener();
+$listener = new EventListener();
 $listener->listen(function(EventListener $listener, EventNotification $event) {
     // Log information about the event
     $listener->log($event->getEventName());
