@@ -99,7 +99,12 @@ class EventListener
                 continue;
             }
             $headers = EventNotification::parseData($input);
-            $payload = fread($this->inputStream, (int) $headers['len']);
+            // PHP 5.6 doesn't deal gracefully with this causing a buffer overflow
+            $payload = '';
+            if (isset($headers['len'])) {
+              $payload = fread($this->inputStream, (int) $headers['len']);
+            }
+
             $notification = new EventNotification($input, $payload, $headers);
             $result = call_user_func($callback, $this, $notification);
             if (true === $result) {
