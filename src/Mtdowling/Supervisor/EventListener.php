@@ -95,7 +95,8 @@ class EventListener
         $this->sendReady();
 
         while (true) {
-            if (!$input = trim($this->readLine())) {
+            $input = trim($this->readLine());
+            if (!$input || !preg_match('#len:#', $input)) {
                 continue;
             }
             $headers = EventNotification::parseData($input);
